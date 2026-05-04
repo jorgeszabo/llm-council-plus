@@ -140,6 +140,31 @@
   line-height: 1;
 }
 
+.install-app-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fde68a;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.install-app-btn:hover {
+  background: rgba(251, 191, 36, 0.18);
+  border-color: rgba(251, 191, 36, 0.55);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.16);
+}
+
 /* Search Input */
 .sidebar-search {
   padding: 0 16px 16px;

@@ -1,16 +1,26 @@
-# React + Vite
+# LLM Council Plus Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite-powered React frontend for LLM Council Plus.
 
-Currently, two official plugins are available:
+## Run Locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+From the repository root, use the combined launcher:
 
-## React Compiler
+```bash
+./start.sh
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Or start the frontend directly:
 
-## Expanding the ESLint configuration
+```bash
+cd frontend
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The frontend runs on `http://localhost:5173` and talks to the backend on `http://localhost:8001`.
+
+## Install As An App
+
+LLM Council Plus is configured as a Progressive Web App. After starting the servers, open `http://localhost:5173` in Chrome or Edge and use the **Install App** button in the sidebar. The installed app opens in a standalone window and keeps using the local backend on port `8001`.
+
+The backend and frontend still need to be running, usually via `./start.sh`, before the installed app can talk to models and load conversations.

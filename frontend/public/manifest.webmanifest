@@ -1,0 +1,36 @@
+{
+  "name": "LLM Council Plus",
+  "short_name": "LLM Council",
+  "description": "A local deliberation workspace for LLM Council Plus.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#060a12",
+  "theme_color": "#0c1222",
+  "orientation": "any",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Council",
+      "short_name": "Council",
+      "description": "Open LLM Council Plus.",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/app-icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}

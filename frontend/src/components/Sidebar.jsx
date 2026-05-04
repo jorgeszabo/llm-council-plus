@@ -11,7 +11,9 @@ export default function Sidebar({
   isLoading,
   onAbort,
   isOpen,
-  onClose
+  onClose,
+  canInstall = false,
+  onInstallApp
 }) {
   const [confirmingDelete, setConfirmingDelete] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -80,6 +82,16 @@ export default function Sidebar({
           <span className="btn-icon">+</span>
           <span className="btn-text">New Discussion</span>
         </button>
+        {canInstall && (
+          <button
+            className="install-app-btn"
+            onClick={onInstallApp}
+            type="button"
+          >
+            <span className="btn-icon">↗</span>
+            <span className="btn-text">Install App</span>
+          </button>
+        )}
       </div>
 
       {/* Search Input */}

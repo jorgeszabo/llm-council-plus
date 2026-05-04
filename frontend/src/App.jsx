@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar';
 import ChatInterface from './components/ChatInterface';
 import Settings from './components/Settings';
 import { api, DEFAULT_EXECUTION_MODE } from './api';
+import { isStandaloneApp } from './pwa';
 import './App.css';
 import './components/StageCopyButtons.css';
 
@@ -24,6 +25,8 @@ function App() {
   const [searchProvider, setSearchProvider] = useState('duckduckgo');
   const [executionMode, setExecutionMode] = useState(DEFAULT_EXECUTION_MODE);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState(null);
+  const [canInstall, setCanInstall] = useState(false);
   const abortControllerRef = useRef(null);
   const requestIdRef = useRef(0);
   const isInitialMount = useRef(true);
@@ -32,6 +35,29 @@ function App() {
   useEffect(() => {
     checkInitialSetup();
   }, []);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setInstallPrompt(event);
+      setCanInstall(!isStandaloneApp());
+    };
+
+    const handleAppInstalled = () => {
+      setInstallPrompt(null);
+      setCanInstall(false);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    setCanInstall(!isStandaloneApp() && Boolean(installPrompt));
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, [installPrompt]);
 
   const checkInitialSetup = async () => {
     try {
@@ -118,6 +144,20 @@ function App() {
   const handleOpenSettings = (section = 'council') => {
     setSettingsInitialSection(section || 'council');
     setShowSettings(true);
+  };
+
+  const handleInstallApp = async () => {
+    if (!installPrompt) return;
+
+    installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+
+    setInstallPrompt(null);
+    setCanInstall(false);
+
+    if (choice.outcome === 'accepted') {
+      console.log('LLM Council Plus install accepted');
+    }
   };
 
   // Load conversations on mount
@@ -705,6 +745,8 @@ function App() {
         onAbort={handleAbort}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        canInstall={canInstall}
+        onInstallApp={handleInstallApp}
       />
       <ChatInterface
         conversation={currentConversation}
