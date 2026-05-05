@@ -35,7 +35,7 @@
   --border-glass: rgba(244, 241, 234, 0.1);
 
   /* Typography */
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-content: 'Source Serif 4', Georgia, serif;
   --font-code: 'JetBrains Mono', monospace;
