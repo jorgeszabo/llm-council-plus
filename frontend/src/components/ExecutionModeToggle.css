@@ -2,10 +2,10 @@
     display: flex;
     gap: 4px;
     padding: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    background: var(--bg-input);
+    backdrop-filter: none;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .mode-option {
@@ -18,7 +18,7 @@
     background: transparent;
     border: none;
     border-radius: 6px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -27,15 +27,15 @@
 }
 
 .mode-option:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8);
+    background: var(--bg-hover);
+    color: var(--text-primary);
     filter: brightness(1.1);
 }
 
 .mode-option.active {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: var(--accent-primary-strong);
     color: white;
-    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.35);
+    box-shadow: var(--shadow-soft);
     transform: translateY(-0.5px);
 }
 

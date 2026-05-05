@@ -1,18 +1,18 @@
-/* Sidebar — Council Chamber */
+/* Sidebar */
 
 .sidebar {
   width: 280px;
   height: 100%;
   background: var(--bg-sidebar);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-right: 1px solid var(--border-glass);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
   z-index: 20;
   flex-shrink: 0;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 6px 0 18px rgba(0, 0, 0, 0.16);
 }
 
 /* Header Area */
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-glass);
 }
 
 .sidebar-title-wrapper {
@@ -35,7 +35,7 @@
   font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .sidebar-subtitle {
@@ -56,10 +56,7 @@
 }
 
 .title-plus {
-  background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-chairman);
   font-weight: 800;
 }
 
@@ -69,9 +66,9 @@
 }
 
 .icon-button {
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
+  background: var(--bg-input);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
   width: 36px;
   height: 36px;
   border-radius: 10px;
@@ -84,10 +81,10 @@
 }
 
 .icon-button:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: #3b82f6;
-  color: #93c5fd;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  background: var(--bg-hover);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  box-shadow: none;
 }
 
 .icon-button:disabled {
@@ -98,16 +95,16 @@
 /* New Council Button Section */
 .sidebar-actions {
   padding: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-glass);
 }
 
 .new-council-btn {
   width: 100%;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: var(--accent-primary-strong);
+  border: 1px solid var(--border-glass);
   color: white;
   padding: 14px 20px;
-  border-radius: 14px;
+  border-radius: 10px;
   font-family: var(--font-ui);
   font-size: 15px;
   font-weight: 600;
@@ -117,13 +114,14 @@
   justify-content: center;
   gap: 10px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+  box-shadow: var(--shadow-soft);
 }
 
 .new-council-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
-  border-color: rgba(59, 130, 246, 0.6);
+  transform: translateY(-1px);
+  background: var(--accent-primary-hover);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--border-color);
 }
 
 .new-council-btn:disabled {
@@ -143,9 +141,9 @@
 .install-app-btn {
   width: 100%;
   margin-top: 10px;
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  color: #fde68a;
+  background: var(--accent-chairman-dim);
+  border: 1px solid var(--border-color);
+  color: var(--accent-chairman);
   padding: 11px 16px;
   border-radius: 10px;
   font-family: var(--font-ui);
@@ -160,9 +158,9 @@
 }
 
 .install-app-btn:hover {
-  background: rgba(251, 191, 36, 0.18);
-  border-color: rgba(251, 191, 36, 0.55);
-  box-shadow: 0 0 16px rgba(251, 191, 36, 0.16);
+  background: var(--bg-hover);
+  border-color: var(--accent-chairman);
+  box-shadow: none;
 }
 
 /* Search Input */
@@ -174,7 +172,7 @@
 .search-input {
   width: 100%;
   padding: 10px 32px 10px 12px;
-  background: rgba(30, 41, 59, 0.5);
+  background: var(--bg-input);
   border: 1px solid var(--border-glass);
   border-radius: 8px;
   color: var(--text-primary);
@@ -191,7 +189,7 @@
 .search-input:focus {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 2px var(--accent-primary-dim);
 }
 
 .search-clear {
@@ -212,7 +210,7 @@
 
 .search-clear:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-hover);
 }
 
 /* Conversation List */
@@ -226,25 +224,25 @@
 }
 
 .conversation-item {
-  background: rgba(30, 41, 59, 0.35);
-  backdrop-filter: blur(10px);
+  background: var(--bg-input);
+  backdrop-filter: none;
   border: 1px solid var(--border-glass);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 14px 16px;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .conversation-item:hover {
-  background: rgba(30, 41, 59, 0.55);
-  border-color: rgba(59, 130, 246, 0.25);
-  transform: translateX(4px);
+  background: var(--bg-hover);
+  border-color: var(--border-color);
+  transform: translateX(2px);
 }
 
 .conversation-item.active {
   background: var(--accent-primary-dim);
-  border-color: rgba(59, 130, 246, 0.45);
-  box-shadow: 0 0 24px rgba(59, 130, 246, 0.18);
+  border-color: var(--accent-primary);
+  box-shadow: none;
 }
 
 .sidebar-empty-state {
@@ -257,8 +255,7 @@
 .conversation-title {
   font-size: 14px;
   font-weight: 500;
-  color: #e2e8f0;
-  /* Force slate-200 */
+  color: var(--text-primary);
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -351,7 +348,7 @@
   background: rgba(239, 68, 68, 0.25);
   border-color: #ef4444;
   color: #fca5a5;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+  box-shadow: none;
 }
 
 /* Sidebar close button (mobile only) */

@@ -18,8 +18,8 @@
   z-index: 100;
   width: 44px;
   height: 44px;
-  background: rgba(30, 41, 59, 0.9);
-  backdrop-filter: blur(12px);
+  background: var(--bg-card);
+  backdrop-filter: blur(6px);
   border: 1px solid var(--border-glass);
   border-radius: 10px;
   cursor: pointer;
@@ -29,8 +29,8 @@
 }
 
 .mobile-menu-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  background: var(--bg-hover);
+  box-shadow: var(--shadow-soft);
 }
 
 .hamburger-icon {
@@ -69,20 +69,20 @@
 
 /* Ensure modals sit on top of the glass UI */
 .settings-overlay {
-  background: rgba(0, 0, 0, 0.7); /* Darker overlay for contrast */
+  background: var(--bg-overlay);
   backdrop-filter: blur(4px);
 }
 
 .settings-modal {
-  background: #0f172a; /* Dark solid background for settings to avoid visual chaos */
+  background: var(--bg-modal);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-glass);
 }
 
 /* Adjust Settings Styles for Dark Mode Compatibility */
 .settings-header {
-  background: #0f172a;
+  background: var(--bg-modal);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -98,11 +98,11 @@
 }
 
 .settings-body {
-  background: #0f172a;
+  background: var(--bg-modal);
 }
 
 .settings-sidebar {
-  background: rgba(15, 23, 42, 0.5);
+  background: var(--bg-dark);
   border-right: 1px solid var(--border-color);
 }
 
@@ -110,16 +110,16 @@
   color: var(--text-secondary);
 }
 .sidebar-nav-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-hover);
   color: var(--text-primary);
 }
 .sidebar-nav-item.active {
-  background: rgba(59, 130, 246, 0.15);
+  background: var(--accent-primary-dim);
   color: var(--accent-primary);
 }
 
 .settings-main-panel {
-  background: #0f172a;
+  background: var(--bg-modal);
 }
 
 .settings-section h3 {
@@ -137,6 +137,7 @@
 .settings-modal textarea,
 .settings-modal select {
   background: #1e293b;
+  background: var(--bg-input);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
@@ -145,7 +146,7 @@
 .settings-modal textarea:focus,
 .settings-modal select:focus {
   border-color: var(--accent-primary);
-  background: #1e293b;
+  background: var(--bg-input);
 }
 
 /* Cards in Settings */
@@ -154,10 +155,10 @@
   background: transparent;
 }
 .provider-option-container:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-hover);
 }
 .provider-option-container.selected {
-  background: rgba(59, 130, 246, 0.1);
+  background: var(--accent-primary-dim);
   border-color: var(--accent-primary);
   box-shadow: none;
 }
@@ -169,7 +170,7 @@
 }
 
 .council-member-row {
-  background: #1e293b;
+  background: var(--bg-elevated);
   border-color: var(--border-color);
 }
 .member-label {
@@ -177,7 +178,7 @@
 }
 
 .api-key-section, .hybrid-settings-card, .full-content-section {
-  background: #1e293b; /* Card bg in settings */
+  background: var(--bg-elevated);
   border-color: var(--border-color);
 }
 
@@ -186,7 +187,7 @@
 }
 
 .settings-footer {
-  background: #0f172a;
+  background: var(--bg-modal);
   border-top-color: var(--border-color);
 }
 
