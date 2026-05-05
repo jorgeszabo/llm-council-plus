@@ -1,5 +1,5 @@
 const CACHE_NAME = 'llm-council-plus-shell-v1';
-const SHELL_URLS = ['/', '/manifest.webmanifest', '/app-icon.svg', '/config.js'];
+const SHELL_URLS = ['/', '/manifest.webmanifest', '/app-icon-v2.svg', '/config.js'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

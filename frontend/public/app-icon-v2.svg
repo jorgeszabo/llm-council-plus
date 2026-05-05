@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Council Plus</title>
+  <desc id="desc">A round council table with four participants.</desc>
+  <defs>
+    <linearGradient id="surface" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#263241"/>
+      <stop offset="1" stop-color="#151922"/>
+    </linearGradient>
+    <linearGradient id="table" x1="148" y1="142" x2="364" y2="370" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffaf2"/>
+      <stop offset="1" stop-color="#ebe6dc"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#surface)"/>
+  <circle cx="256" cy="256" r="164" fill="none" stroke="#d4b36a" stroke-width="18"/>
+  <circle cx="256" cy="256" r="104" fill="url(#table)" stroke="#25211d" stroke-width="12"/>
+  <circle cx="256" cy="256" r="44" fill="none" stroke="#9d7628" stroke-width="10"/>
+
+  <circle cx="256" cy="126" r="30" fill="#fffaf2" stroke="#d4b36a" stroke-width="10"/>
+  <circle cx="386" cy="256" r="30" fill="#fffaf2" stroke="#d4b36a" stroke-width="10"/>
+  <circle cx="256" cy="386" r="30" fill="#fffaf2" stroke="#d4b36a" stroke-width="10"/>
+  <circle cx="126" cy="256" r="30" fill="#fffaf2" stroke="#d4b36a" stroke-width="10"/>
+
+  <path d="M256 196v120M196 256h120" fill="none" stroke="#25211d" stroke-width="16" stroke-linecap="round"/>
+</svg>
