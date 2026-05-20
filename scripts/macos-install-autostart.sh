@@ -58,9 +58,9 @@ cat > "$PLIST_PATH" <<PLIST
 PLIST
 
 launchctl bootout "$LAUNCHCTL_DOMAIN" "$PLIST_PATH" 2>/dev/null || true
-launchctl bootstrap "$LAUNCHCTL_DOMAIN" "$PLIST_PATH"
 
 if [[ "$START_NOW" == "true" ]]; then
+  launchctl bootstrap "$LAUNCHCTL_DOMAIN" "$PLIST_PATH"
   launchctl kickstart -k "$LAUNCHCTL_DOMAIN/$LABEL"
 fi
 

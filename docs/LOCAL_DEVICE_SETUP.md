@@ -53,20 +53,42 @@ http://localhost:8001
 
 ## Start Automatically After Login
 
-The installed PWA cannot start local shell commands by itself. To avoid remembering `./start.sh`, install the macOS LaunchAgent:
+The installed PWA cannot start local shell commands by itself.
+
+Because this repo lives in iCloud Drive under `Documents`, macOS privacy protections may block background LaunchAgents from reading the folder. The most reliable option is to use the `.command` launcher and add it to Login Items.
+
+First make sure it is executable:
 
 ```bash
 cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
+chmod +x "scripts/Start LLM Council.command"
+```
+
+Then add this file to macOS Login Items:
+
+```text
+/Users/jorgeszabo/Documents/AI Tools/llm-council-plus/scripts/Start LLM Council.command
+```
+
+System Settings path:
+
+```text
+System Settings > General > Login Items & Extensions > Open at Login
+```
+
+Click `+`, choose `Start LLM Council.command`, and add it.
+
+After login, Terminal will open and start the backend/frontend. Then open the installed PWA from the Dock or Applications.
+
+### LaunchAgent Option
+
+There is also a LaunchAgent helper:
+
+```bash
 ./scripts/macos-install-autostart.sh
 ```
 
-If the app is already running and you only want to enable it for the next login:
-
-```bash
-./scripts/macos-install-autostart.sh --no-start
-```
-
-After that, LLM Council Plus starts automatically when you log in. Open the installed PWA from the Dock or Applications after login.
+For this iCloud Documents setup, use it only if macOS has permission to let background shell processes read the folder. If logs show `Operation not permitted`, use the Login Items `.command` method above instead.
 
 Logs are written to:
 
