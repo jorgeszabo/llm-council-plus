@@ -36,6 +36,8 @@ The result? More balanced, accurate, and thoroughly vetted responses that levera
 
 ## Installation
 
+> **Jorge's iCloud setup:** If you are setting this up on another synced Mac, see [docs/LOCAL_DEVICE_SETUP.md](docs/LOCAL_DEVICE_SETUP.md) first.
+
 ```bash
 # Clone and install
 git clone https://github.com/jacob-bd/llm-council-plus.git
