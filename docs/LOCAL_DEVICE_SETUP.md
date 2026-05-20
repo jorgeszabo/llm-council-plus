@@ -51,9 +51,36 @@ Backend runs on:
 http://localhost:8001
 ```
 
+## Start Automatically After Login
+
+The installed PWA cannot start local shell commands by itself. To avoid remembering `./start.sh`, install the macOS LaunchAgent:
+
+```bash
+cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
+./scripts/macos-install-autostart.sh
+```
+
+After that, LLM Council Plus starts automatically when you log in. Open the installed PWA from the Dock or Applications after login.
+
+Logs are written to:
+
+```text
+~/Library/Logs/llm-council-plus/start.log
+~/Library/Logs/llm-council-plus/error.log
+```
+
+To remove autostart:
+
+```bash
+cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
+./scripts/macos-uninstall-autostart.sh
+```
+
 ## Installed PWA
 
-Start the app with `./start.sh` first, then open the installed LLM Council app from the Dock or Applications.
+If autostart is installed, open the installed LLM Council app from the Dock or Applications after login.
+
+If autostart is not installed, start the app with `./start.sh` first, then open the installed PWA.
 
 If the installed app shows an old icon or old behavior, remove/reinstall the PWA from Chrome:
 
