@@ -8,6 +8,11 @@ PLIST_DIR="$HOME/Library/LaunchAgents"
 PLIST_PATH="$PLIST_DIR/$LABEL.plist"
 LOG_DIR="$HOME/Library/Logs/llm-council-plus"
 LAUNCHCTL_DOMAIN="gui/$(id -u)"
+START_NOW="true"
+
+if [[ "${1:-}" == "--no-start" ]]; then
+  START_NOW="false"
+fi
 
 mkdir -p "$PLIST_DIR" "$LOG_DIR"
 
@@ -54,10 +59,18 @@ PLIST
 
 launchctl bootout "$LAUNCHCTL_DOMAIN" "$PLIST_PATH" 2>/dev/null || true
 launchctl bootstrap "$LAUNCHCTL_DOMAIN" "$PLIST_PATH"
-launchctl kickstart -k "$LAUNCHCTL_DOMAIN/$LABEL"
+
+if [[ "$START_NOW" == "true" ]]; then
+  launchctl kickstart -k "$LAUNCHCTL_DOMAIN/$LABEL"
+fi
 
 echo "LLM Council Plus autostart installed."
 echo "LaunchAgent: $PLIST_PATH"
+if [[ "$START_NOW" == "false" ]]; then
+  echo "The app will start automatically at next login."
+else
+  echo "The app was started now."
+fi
 echo "Logs:"
 echo "  $LOG_DIR/start.log"
 echo "  $LOG_DIR/error.log"

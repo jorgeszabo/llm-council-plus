@@ -60,6 +60,12 @@ cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
 ./scripts/macos-install-autostart.sh
 ```
 
+If the app is already running and you only want to enable it for the next login:
+
+```bash
+./scripts/macos-install-autostart.sh --no-start
+```
+
 After that, LLM Council Plus starts automatically when you log in. Open the installed PWA from the Dock or Applications after login.
 
 Logs are written to:
