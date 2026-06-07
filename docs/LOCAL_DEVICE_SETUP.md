@@ -1,41 +1,47 @@
 # Local Device Setup
 
-Use these notes when this repo syncs to a new Mac through iCloud Drive.
+Use these notes when setting up or moving LLM Council Plus on a Mac.
 
 ## Folder
 
 Main work copy:
 
 ```bash
-/Users/jorgeszabo/Documents/AI Tools/llm-council-plus
+/Users/jorgeszabo/Developer/LLM Council Plus
 ```
 
-Use this copy instead of the old folder under `/Users/jorgeszabo/llm-council-plus`.
+Use this Developer copy instead of iCloud/Documents folders. Developer folders avoid iCloud placeholder files, sync locks, and macOS Documents privacy issues.
+
+Compatibility symlink:
+
+```text
+/Users/jorgeszabo/Documents/50_Projects/LLM-Council-Plus -> /Users/jorgeszabo/Developer/LLM Council Plus
+```
 
 ## First Setup On Each Mac
 
-Let iCloud fully download the folder first. Then install machine-local dependencies:
+Install machine-local dependencies:
 
 ```bash
-cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus/frontend"
+cd "/Users/jorgeszabo/Developer/LLM Council Plus/frontend"
 npm install
 ```
 
 If backend dependencies are missing:
 
 ```bash
-cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
+cd "/Users/jorgeszabo/Developer/LLM Council Plus"
 uv sync
 ```
 
-`node_modules`, Python environments, and caches are machine-specific. Reinstall them per device instead of relying on iCloud to sync them.
+`node_modules`, Python environments, and caches are machine-specific. Reinstall them per device instead of syncing them.
 
 ## Start The App
 
 Run from the repo root, not from `frontend`:
 
 ```bash
-cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
+cd "/Users/jorgeszabo/Developer/LLM Council Plus"
 ./start.sh
 ```
 
@@ -51,71 +57,12 @@ Backend runs on:
 http://localhost:8001
 ```
 
-## Start Automatically After Login
-
-The installed PWA cannot start local shell commands by itself.
-
-Because this repo lives in iCloud Drive under `Documents`, macOS privacy protections may block background LaunchAgents from reading the folder. The most reliable option is to use the `.command` launcher and add it to Login Items.
-
-First make sure it is executable:
-
-```bash
-cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
-chmod +x "scripts/Start LLM Council.command"
-```
-
-Then add this file to macOS Login Items:
-
-```text
-/Users/jorgeszabo/Documents/AI Tools/llm-council-plus/scripts/Start LLM Council.command
-```
-
-System Settings path:
-
-```text
-System Settings > General > Login Items & Extensions > Open at Login
-```
-
-Click `+`, choose `Start LLM Council.command`, and add it.
-
-After login, Terminal will open and start the backend/frontend. Then open the installed PWA from the Dock or Applications.
-
-### LaunchAgent Option
-
-There is also a LaunchAgent helper:
-
-```bash
-./scripts/macos-install-autostart.sh
-```
-
-For this iCloud Documents setup, use it only if macOS has permission to let background shell processes read the folder. If logs show `Operation not permitted`, use the Login Items `.command` method above instead.
-
-Logs are written to:
-
-```text
-~/Library/Logs/llm-council-plus/start.log
-~/Library/Logs/llm-council-plus/error.log
-```
-
-To remove autostart:
-
-```bash
-cd "/Users/jorgeszabo/Documents/AI Tools/llm-council-plus"
-./scripts/macos-uninstall-autostart.sh
-```
-
-## Installed PWA
-
-If autostart is installed, open the installed LLM Council app from the Dock or Applications after login.
-
-If autostart is not installed, start the app with `./start.sh` first, then open the installed PWA.
-
 ## Managed Launcher App
 
-The PWA itself cannot start or stop local shell commands. To get app-like behavior, create the managed macOS launcher:
+The PWA itself cannot start or stop local shell commands. To get app-like behavior, use the managed macOS launcher:
 
 ```bash
-cd "/Users/jorgeszabo/Documents/50_Projects/LLM-Council-Plus"
+cd "/Users/jorgeszabo/Developer/LLM Council Plus"
 ./scripts/macos-create-managed-launcher.sh
 ```
 
@@ -142,6 +89,67 @@ Logs are written to:
 ~/Library/Logs/llm-council-plus/managed-backend.log
 ~/Library/Logs/llm-council-plus/managed-frontend.log
 ```
+
+## Start Automatically After Login
+
+The installed PWA cannot start local shell commands by itself.
+
+If you want LLM Council to start automatically after login, add the managed launcher app to Login Items:
+
+```text
+~/Applications/LLM Council Plus Launcher.app
+```
+
+System Settings path:
+
+```text
+System Settings > General > Login Items & Extensions > Open at Login
+```
+
+Click `+`, choose `LLM Council Plus Launcher.app`, and add it.
+
+Alternative terminal-based launcher:
+
+```bash
+cd "/Users/jorgeszabo/Developer/LLM Council Plus"
+chmod +x "scripts/Start LLM Council.command"
+```
+
+Then add this file to Login Items if you prefer seeing a Terminal window:
+
+```text
+/Users/jorgeszabo/Developer/LLM Council Plus/scripts/Start LLM Council.command
+```
+
+### LaunchAgent Option
+
+There is also a LaunchAgent helper:
+
+```bash
+./scripts/macos-install-autostart.sh
+```
+
+Now that the repo is in `~/Developer`, the LaunchAgent is less likely to hit macOS Documents privacy restrictions. The managed launcher app is still the preferred path because it can stop the servers when the PWA quits.
+
+Logs are written to:
+
+```text
+~/Library/Logs/llm-council-plus/start.log
+~/Library/Logs/llm-council-plus/error.log
+```
+
+To remove autostart:
+
+```bash
+cd "/Users/jorgeszabo/Developer/LLM Council Plus"
+./scripts/macos-uninstall-autostart.sh
+```
+
+## Installed PWA
+
+If autostart is installed, open the installed LLM Council app from the Dock or Applications after login.
+
+If autostart is not installed, start the app with `./start.sh` first, then open the installed PWA.
 
 If the installed app shows an old icon or old behavior, remove/reinstall the PWA from Chrome:
 
