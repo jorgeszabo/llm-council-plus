@@ -22,9 +22,14 @@ osacompile -o "$APP_PATH" "$APPLESCRIPT"
 rm -f "$APPLESCRIPT"
 
 if [[ -f "$PWA_APP/Contents/Resources/app.icns" ]]; then
+  cp "$PWA_APP/Contents/Resources/app.icns" "$APP_PATH/Contents/Resources/AppIcon.icns"
   cp "$PWA_APP/Contents/Resources/app.icns" "$APP_PATH/Contents/Resources/applet.icns"
-  touch "$APP_PATH"
+  /usr/libexec/PlistBuddy -c "Set :CFBundleIconFile AppIcon" "$APP_PATH/Contents/Info.plist"
+  /usr/libexec/PlistBuddy -c "Delete :CFBundleIconName" "$APP_PATH/Contents/Info.plist" 2>/dev/null || true
 fi
+
+codesign --force --deep --sign - "$APP_PATH" >/dev/null 2>&1 || true
+touch "$APP_PATH"
 
 echo "Created launcher app:"
 echo "$APP_PATH"
