@@ -110,6 +110,39 @@ If autostart is installed, open the installed LLM Council app from the Dock or A
 
 If autostart is not installed, start the app with `./start.sh` first, then open the installed PWA.
 
+## Managed Launcher App
+
+The PWA itself cannot start or stop local shell commands. To get app-like behavior, create the managed macOS launcher:
+
+```bash
+cd "/Users/jorgeszabo/Documents/50_Projects/LLM-Council-Plus"
+./scripts/macos-create-managed-launcher.sh
+```
+
+This creates:
+
+```text
+~/Applications/LLM Council Plus Launcher.app
+```
+
+Put **LLM Council Plus Launcher.app** in the Dock instead of the Chrome PWA icon.
+
+When opened, it:
+
+1. Starts the backend on `localhost:8001` if needed.
+2. Starts the frontend on `localhost:5173` if needed.
+3. Opens the installed Chrome PWA.
+4. Waits for the PWA to quit.
+5. Stops only the server processes it started.
+
+Logs are written to:
+
+```text
+~/Library/Logs/llm-council-plus/managed-launcher.log
+~/Library/Logs/llm-council-plus/managed-backend.log
+~/Library/Logs/llm-council-plus/managed-frontend.log
+```
+
 If the installed app shows an old icon or old behavior, remove/reinstall the PWA from Chrome:
 
 1. Open `http://localhost:5173` in Chrome.
