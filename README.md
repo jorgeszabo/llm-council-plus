@@ -36,7 +36,25 @@ The result? More balanced, accurate, and thoroughly vetted responses that levera
 
 ## Installation
 
-> **Jorge's iCloud setup:** If you are setting this up on another synced Mac, see [docs/LOCAL_DEVICE_SETUP.md](docs/LOCAL_DEVICE_SETUP.md) first.
+### Jorge's One-Command Mac Install
+
+For a fresh Mac for family use, run:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jorgeszabo/llm-council-plus/codex-pwa-app/scripts/install-macos.sh)"
+```
+
+This installs your `codex-pwa-app` branch into:
+
+```text
+~/Developer/LLM Council Plus
+```
+
+It installs local dependencies, creates `~/Applications/LLM Council Plus Launcher.app`, and opens it. API keys and conversations are not copied; each person configures their own Settings.
+
+> If Homebrew is not installed, the script will show the Homebrew install command and stop. Install Homebrew, then rerun the command above.
+
+### Manual Install
 
 ```bash
 # Clone and install

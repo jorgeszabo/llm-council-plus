@@ -20,6 +20,14 @@ Compatibility symlink:
 
 ## First Setup On Each Mac
 
+For a fresh Mac, the simplest install is:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jorgeszabo/llm-council-plus/codex-pwa-app/scripts/install-macos.sh)"
+```
+
+This clones the custom branch, installs dependencies, creates the launcher app, and opens it. It does not copy Jorge's API keys or conversations.
+
 Install machine-local dependencies:
 
 ```bash
